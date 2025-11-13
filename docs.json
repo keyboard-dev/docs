@@ -22,7 +22,8 @@
               "getting-started/other-mcp-clients"
             ]
           },
-          {"group": "Guides",
+          {
+            "group": "Guides",
             "pages": [
               "guides/claude",
               "guides/app_builder",
@@ -32,8 +33,7 @@
           {
             "group": "How it works",
             "pages": [
-              "how-it-works/architecture",
-              "how-it-works/disclaimer"
+              "how-it-works/architecture"
             ]
           }
         ]
@@ -76,15 +76,22 @@
       "href": "https://pgdaqkquqfk.typeform.com/KeYboaRd"
     }
   },
-    "integrations": {
+  "integrations": {
     "posthog": {
-        "apiKey": "phc_uIFQIzK0xlQsQOKVHT7lpA7hbbkci2yFodxco2TuiIa"
+      "apiKey": "phc_uIFQIzK0xlQsQOKVHT7lpA7hbbkci2yFodxco2TuiIa"
     }
   },
   "contextual": {
-    "options": ["copy", "view", "chatgpt", "claude", "perplexity", "mcp", "cursor", "vscode"]
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
-  "footer": {
-    
-  }
+  "footer": {}
 }

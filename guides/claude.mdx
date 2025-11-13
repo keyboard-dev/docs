@@ -1,68 +1,67 @@
 ---
-title: "Using Keyboard in Claude"
+title: "Using Keyboard in your AI client"
+description: "Tips and tricks for how to best leverage Keyboard"
 ---
 
 <Note>
   Before getting started:
 
   - Visit the [quickstart](https://docs.keyboard.dev/docs/quickstart) guide to ensure you have Keyboard installed with the proper permissions
-  - Connect Keyboard to the third-party apps you want to give Claude access to (see [here](https://docs.keyboard.dev/docs/connectapps) if you haven't already)
+  - Connect Keyboard to the third-party apps you want to give your AI access to (see [here](https://docs.keyboard.dev/docs/connectapps) if you haven't already)
 </Note>
 
 ## Key execution requirements
 
 1. Sign in to Keyboard
-2. Open Claude and ensure Keyboard is connected.
+2. Open your AI client and ensure Keyboard is connected.
 
    <Tip>
-     _Tip: ask Claude if it is connected to Keyboard_
+     _Tip: ask your AI if it is connected to Keyboard and what tools it is connected to_
    </Tip>
 3. Keep the Keyboard desktop app open so you can approve the workflows as they come up
 
 ## Executing tasks with Keyboard
 
-You're ready to get started\! Go into Claude and start asking it to perform tasks in the various apps you connected.
-
 ### Initial prompt requirement
 
-**Important**: When interacting with the system, always begin your prompt with the word 'keyboard'. This signals the system that you want to use Keyboard not accidentally trigger another tool.
+<Info>
+  When interacting with the system, always begin your prompt with the word 'keyboard'. This signals the system that you want to use Keyboard not accidentally trigger another tool.
+</Info>
 
 Example:
 
 ```
-keyboard: Please run some hello world code
+Use keyboard check my calendar and help me prepare for my meetings for the day
 ```
 
 ### Approval app workflow
 
-When prompted to execute a task Claude will create a GitHub codespace, ensure it's connected to the necessary third-party apps and then write code to execute the task. By default, you will need to approve the code before Claude executes the code to undertake the task at hand.
+When prompted to execute a task your AI will create a GitHub codespace, ensure it's connected to the necessary third-party apps and then write code to execute the task. By default, you will need to approve the code before your AI executes the code to undertake the task at hand.
 
 You will see a notification in the Keyboard desktop app to approve or deny the request
 
 <Tip>
-  _Tip: Check the Keyboard desktop app if Claude seems to be stuck before executing a task. You may have to approve it before it gets executed._
+  _Tip: Check the Keyboard desktop app if your AI client seems to be stuck before executing a task. You may have to approve it before it gets executed._
 </Tip>
 
 ### Save and re-use scripts
 
-Claude will write a new script for each task it is asked to execute. Keyboard has the functionality to save successful scripts so that Claude can recall them to save time when you need similar tasks in the future.
+Your AI client will write a new script for each task it is asked to execute. Keyboard has the functionality to save successful scripts so that your AI client can recall them to save time when you need similar tasks in the future.
 
-**To save a script** after a task was successfully executed, ask Claude to save it for future use. You can give it any name you want.
+**To save a script** after a task was successfully executed, ask your AI client to save it for future use. You can give it any name you want.
 
-**Example:** If you successfully created a Google Slides presentation with Claude, you can tell Claude: _"Save this script in Keyboard and call it 'Create Google Slides'"_
+**Example:** If you successfully created a Google Slides presentation with your AI client, you can tell it: _"Save this script in Keyboard and call it 'Create Google Slides'"_
 
 **To use a saved script:** The next time you want to create a Google Slides presentation. For example, simply add _"Keyboard use the Create Google Slides script"_ in your prompt.
 
-**To see your saved scripts:** Ask Claude _"What scripts do I have saved in Keyboard?"_ or _"Show me my saved Keyboard scripts"_
+**To see your saved scripts:** Ask your AI _"What scripts do I have saved in Keyboard?"_ or _"Show me my saved Keyboard scripts"_
 
 ## Best practices
 
-- Always verify your WebSocket connection is stable
 - Start prompts with 'keyboard' to ensure proper context
-- Use the Claude Desktop client for integrated experiences
+- Check the Keyboard app for a notifciation if the AI is stalling out
 
 ## Troubleshooting
 
 - If a connected app isn't working you can always ask Keyboard to list what environment variables it has access to
-- Verify WebSocket connection status by clicking into the Keyboard desktop app _mcp-notification-app_
-- Validate GitHub PAT permissions
+- Verify connection status by clicking into the Keyboard desktop app
