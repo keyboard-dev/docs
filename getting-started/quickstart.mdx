@@ -1,6 +1,6 @@
 ---
 title: "Quickstart"
-description: "Set up Keyboard in minutes in Claude Desktop"
+description: "Set up Keyboard in minutes "
 ---
 
 ## Getting started
@@ -9,11 +9,12 @@ description: "Set up Keyboard in minutes in Claude Desktop"
   **Prerequisites**:
 
   - Node.js version 18 or higher
-  - Claude Desktop installed (See [here](https://docs.keyboard.dev/getting-started/other-mcp-clients) to use Keyboard with other AI clients)
   - MacOS (for now) - This guide and the current release are for Mac users. We're working on support for other platforms.
+  - A GitHub account (free to sign up [here](https://github.com/))
+  - Any AI Client that supports MCP
 </Info>
 
-### Install Keyboard desktop app
+### Step 1: Install Keyboard desktop app
 
 <Tabs>
   <Tab title="Option 1: Download and open the desktop app">
@@ -51,29 +52,13 @@ description: "Set up Keyboard in minutes in Claude Desktop"
   </Tab>
 </Tabs>
 
-### Set up in Claude Desktop
-
-<Info>
-  If you already have the Keyboard extension installed in Claude Desktop you can skip this section. If not, follow the steps below to get set up in Claude Desktop.
-</Info>
-
-Download the keyboard-mcp.dxt file found [here](https://github.com/keyboard-dev/keyboard-mcp/releases/latest).
-
-<Tip>
-  Try opening the .dxt file and you should be taken directly to the page in Claude Desktop to install Keyboard. If that doesn't work, follow the steps below.
-</Tip>
-
-Navigate to the Claude Desktop app Extensions page in Claude Desktop's settings. Select "Advanced settings", then "Install Extension... " and select the keyboard-mcp.dxt file you just downloaded.
-
-Install the Extension and ensure that Keyboard is enabled (see slider on left side of image below).
-
-![Screenshot 2025-07-28 at 4.30.21 PM.png](/images/Screenshot2025-07-28at4.30.21PM.png)
+### Step 2: Run through the onboarding on the desktop app
 
 That's it! Setup is done.
 
 ## Try your first prompt
 
-Navigate back to the Claude chat in your Claude Desktop and try a prompt like this:
+Navigate back to the AI Client where you connected Keyboard and try your first prompt.
 
 ```markdown
 Can you run hello world code with Keyboard?
@@ -87,19 +72,21 @@ Keyboard will plan, create a codespace, connect to a websocket, and run code tha
 
 ## Connect your apps to Keyboard
 
+Keyboard has several tools you can connect out of the box but you can also connect any of your apps via API.
+
 See [here](https://docs.keyboard.dev/getting-started/thirdpartyapps) to learn how to connect your SaaS apps. Keyboard will work with any app that has a REST API, SDK, or CLI.
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="Claude is not performing the requested task">
-    If Claude is trying to give you instructions or isn't performing the requested task you can try the following steps:
+  <Accordion title="Your AI Client is not performing the requested task">
+    If your AI Client is trying to give you instructions or isn't performing the requested task you can try the following steps:
 
     - Ensure you have Keyboard open
-    - Ask Claude to connect to Keyboard
+    - Ask your AI to connect to Keyboard
     - Specifically call out Keyboard in your prompt (i.e. Use Keyboard to...)
     - Ensure you have given Keyboard access to the app via [these steps](https://docs.keyboard.dev/getting-started/thirdpartyapps)
-    - Ask Claude what environment variables it is connected to and ensure that it has access to the API of the tool you are trying to use
+    - Ask your AI what environment variables it is connected to and ensure that it has access to the API of the tool you are trying to use
     - Verify that your forked repository is up to date with the latest changes from the main repo
   </Accordion>
   <Accordion title="Not seeing notifications from Keyboard">

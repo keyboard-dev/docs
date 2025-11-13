@@ -1,23 +1,17 @@
 ---
 title: "Welcome to Keyboard"
-description: "One MCP, all your apps, no credit tracking"
+description: "The AI orchestration layer"
 ---
 
-## Introduction
+## What is Keyboard?
 
-Keyboard is an open source Model Context Protocol (MCP) server designed to transform how you interact with AI clients like Claude via direct code execution and task automation. It provides a flexible and secure platform for connecting your internal applications to your AI client and executing complex tasks across various domains.
+Keyboard is as a single, secure bridge between your AI client and the rest of your tools. Connect all of your tools to Keyboard and connect Keyboard to the AI Client of your choice to securely have your AI run tasks. Keyboard is built with zero trust security. Run every task inside your own infrastructure, automate end-to-end workflows, and trigger actions that adapt to the context of each request, all from one MCP server.
 
-## What can Keyboard do?
-
-Keyboard acts as a single, secure bridge between your AI client and the rest of your tools. With it, you can connect multiple applications, run every task inside your own infrastructure, automate end-to-end workflows, and trigger actions that adapt to the context of each request—all from one MCP server.
-
-Here's a simple interactive demo showing Keyboard and Claude in action:
-
-<iframe src="https://app.supademo.com/embed/cmd6bnb3t5xwac4kjx91usuv3?embed_v=2" loading="lazy" title="Keyboard Demo" allow="clipboard-write" frameborder="0" width="100%" height="500" allowfullscreen />
+## How it works
 
 ### Secure code execution
 
-Whenever an AI-generated snippet runs through Keyboard, it does so in a sandboxed environment. Each run is isolated, logged, and governed by built-in safeguards that block malicious behavior before it can reach your production systems.
+Keyboard relies on remote, secure, code execution to run taks. When given a prompt via the AI client, Keyboard runs a local, ephemeral, coding environment on your machine to generate code to execute the task. Whenever an AI-generated snippet runs through Keyboard, it does so in a sandboxed environment. Each run is isolated, logged, and governed by built-in safeguards that block malicious behavior before it can reach your production systems.
 
 ### Task automation
 

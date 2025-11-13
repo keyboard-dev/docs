@@ -3,9 +3,15 @@ title: "Connect your apps"
 description: "Follow these steps to securely connect Keyboard to the apps you want to use in your AI Client"
 ---
 
+## Out of the box connectors
+
+Keyboard supports 
+
+## Connecting apps via API
+
 ### Navigate to Repo Settings
 
-1. Go to your GitHub repository that you forked, it should have the name "codespace-executor".
+1. Go to your GitHub repository that was created during the onboarding process, it should have the name "codespace-executor".
 2. Click on the **Settings** tab (you need admin access)
 3. In the left sidebar, click **Secrets and variables**
 4. Click **Codespaces**
@@ -21,9 +27,17 @@ description: "Follow these steps to securely connect Keyboard to the apps you wa
   **Tips**
 
   - Once you've added the secrets you will have to reset any codespaces already running (you can ask Keyboard to delete existing codespaces)
-  - _In Claude desktop ask what environment variables Keyboard has access to in order to confirm the connection worked_
-  - Start asking Claude to perform tasks in your connected apps once it confirms it has access to
+  - _Ask your AI client connected to Keyboard "what environment variables does Keyboard have access" to in order to confirm the connection worked_
+  - Start asking your AI to perform tasks in your connected apps once it confirms it has access
 </Tip>
+
+## Connecting apps via MCP (coming soon!)
+
+The ability to connect apps via MCP is not supported by Keyboard today but is on the roadmap. Reach out at [support@keyboard.dev](mailto:support@keyboard.dev) if this is something you're looking for and we'll ensure you can connect the apps you want (and move this feature up the priority list!). 
+
+## Brosweruse (coming soon!)
+
+Soon you will be able to use Keyboard to have your AI work in your connected apps via the browser if there is no API or MCP. Reach out at [support@keyboard.dev](mailto:support@keyboard.dev) if this is something you're looking for and we'll ensure you can connect the apps you want (and move this feature up the priority list!). 
 
 ## Security overview
 
@@ -61,39 +75,3 @@ KEYBOARD_GITHUB_TOKEN_FOR_API
 - Ambiguous abbreviations
 - Storing secrets in code or configuration files
 - Using production keys in development environments
-
-## Step-by-step integration examples
-
-<AccordionGroup>
-  <Accordion title="Typeform integration">
-    **Getting Your Typeform API Key:**
-
-    1. Log in to [Typeform](https://typeform.com/)
-    2. Click on your profile picture → **Settings**
-    3. Go to **Personal tokens**
-    4. Click **Generate a new token**
-    5. Give it a descriptive name (e.g., "Keyboard Development")
-    6. Copy your personal access token (starts with tfp\_)
-
-    **Add to GitHub Codespaces:**
-
-    - **Secret Name**: KEYBOARD_TYPEFORM_API_KEY
-    - **Secret Value**: tfp_your_actual_token_here
-  </Accordion>
-  <Accordion title="SendGrid email integration">
-    **Getting Your SendGrid API Key:**
-
-    1. Log in to [SendGrid](https://sendgrid.com/)
-    2. Go to **Settings** → **API Keys**
-    3. Click **Create API Key**
-    4. Choose **Full Access** or configure specific permissions
-    5. Copy your API key (starts with SG.)
-
-    **Add to GitHub Codespaces:**
-
-    - **Secret Name**: KEYBOARD_SENDGRID_API_KEY
-    - **Secret Value**: SG.your_sendgrid_api_key_here
-    - **Secret Name**: KEYBOARD_SENDGRID_FROM_EMAIL
-    - **Secret Value**: [your_verified_sender@example.com](mailto:your_verified_sender@example.com)
-  </Accordion>
-</AccordionGroup>
