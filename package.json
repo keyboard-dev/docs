@@ -1,0 +1,57 @@
+{
+  "name": "keyboard-docs",
+  "version": "0.0.0",
+  "private": true,
+  "cloudflare": {
+    "bindings": {
+      "DOCSDEV_SITE_TOKEN": {
+        "description": "Site token from your app.docs.dev dashboard (starts with dst_). Paste it to bind this site to your team automatically. Not starting from app.docs.dev? Enter: unset — you can connect from /admin later."
+      },
+      "HOME_REDIRECT_TO_DOCS": {
+        "description": "Don't want a landing page? Enter `true` and the site's index route `/` will redirect straight to `/docs`. Leave as `false` to keep the landing page (you can change this later in wrangler.jsonc or the dashboard)."
+      }
+    }
+  },
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start",
+    "types:check": "fumadocs-mdx && next typegen && tsc --noEmit",
+    "postinstall": "fumadocs-mdx",
+    "lint": "eslint",
+    "cf:build": "opennextjs-cloudflare build",
+    "deploy": "opennextjs-cloudflare build && node scripts/cf-deploy.mjs",
+    "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "cf:deploy": "opennextjs-cloudflare build && node scripts/cf-deploy.mjs",
+    "generate:api": "node scripts/generate-api-docs.mjs"
+  },
+  "dependencies": {
+    "@chenglou/pretext": "^0.0.8",
+    "@mdx-js/mdx": "^3.1.1",
+    "fumadocs-core": "16.10.2",
+    "fumadocs-docgen": "^3.0.10",
+    "fumadocs-mdx": "15.0.12",
+    "fumadocs-openapi": "^11.0.6",
+    "fumadocs-ui": "16.10.2",
+    "jose": "^6.2.3",
+    "lucide-react": "^1.17.0",
+    "next": "16.2.9",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@opennextjs/cloudflare": "^1.19.11",
+    "@tailwindcss/postcss": "^4.3.0",
+    "@types/mdx": "^2.0.14",
+    "@types/node": "^25.9.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "16.2.9",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^4.3.0",
+    "typescript": "^6.0.3",
+    "wrangler": "^4.110.0"
+  }
+}
