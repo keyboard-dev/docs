@@ -147,6 +147,48 @@ curl -X DELETE https://workspace.keyboard.dev/api/docs/<doc-id> \
   -H "Authorization: Bearer $KEYBOARD_JWT"
 ```
 
+### Use it with the custom OAuth execute endpoint
+
+Keyboard Workspace also works through Keyboard's **custom OAuth execute endpoint** — the same proxy your code uses to reach any custom OAuth app. This matters inside Keyboard's code-execution sandbox, where network egress is locked down to `api.keyboard.dev`: instead of calling the app's host directly, you send the request to the execute endpoint and Keyboard forwards it with the stored OAuth token (credentials never enter the sandbox or the model's context).
+
+```
+POST https://api.keyboard.dev/api/custom-oauth/execute
+Authorization: Bearer <KEYBOARD_JWT>
+```
+
+Pass the provider id of the app registered in your org, plus the request you want to make:
+
+```bash
+curl -X POST https://api.keyboard.dev/api/custom-oauth/execute \
+  -H "Authorization: Bearer $KEYBOARD_JWT" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "providerId": "<your-workspace-provider-id>",
+    "method": "POST",
+    "url": "https://workspace.keyboard.dev/api/docs",
+    "headers": { "Content-Type": "application/json" },
+    "body": { "title": "Q3 Plan", "content": "# Goals" }
+  }'
+```
+
+| Field        | Required | Description                                                        |
+| ------------ | -------- | ------------------------------------------------------------------ |
+| `providerId` | Yes      | Id of the custom OAuth provider registered in your org             |
+| `url`        | Yes      | Full URL of the endpoint to call (any of the CRUD endpoints above) |
+| `method`     | No       | HTTP method (`GET`, `POST`, `PATCH`, `DELETE`)                     |
+| `headers`    | No       | Headers to forward (e.g. `Content-Type`)                           |
+| `body`       | No       | JSON body to forward                                               |
+
+The upstream response comes back wrapped in an envelope:
+
+```json
+{ "success": true, "status": 200, "statusText": "OK", "data": { "...": "the app's response" } }
+```
+
+<Tip>
+  Not sure what your provider id is? Ask your AI client — "What apps do I have connected through Keyboard?" — or find the app in your admin dashboard.
+</Tip>
+
 ### Try it with a prompt
 
 You don't need to write these requests yourself — describe the outcome and Keyboard handles the API calls. In Claude Desktop, try prompts like:
