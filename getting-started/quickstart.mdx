@@ -95,7 +95,7 @@ Not ready to connect your real apps yet? Keyboard ships with **Keyboard Workspac
 
 ### Sign in
 
-Open the Keyboard Workspace app in your browser and click **Sign in with Keyboard** — it uses the same account you created during setup. You can create and edit docs in the UI, and anything Keyboard creates via the API shows up there too.
+Open [workspace.keyboard.dev](https://workspace.keyboard.dev) in your browser and click **Sign in with Keyboard** — it uses the same account you created during setup. You can create and edit docs in the UI, and anything Keyboard creates via the API shows up there too.
 
 ### API endpoints
 
@@ -123,27 +123,27 @@ Limits: titles up to 300 characters, content up to 1,000,000 characters. Errors 
 
 ```bash
 # Create a doc
-curl -X POST https://<workspace-url>/api/docs \
+curl -X POST https://workspace.keyboard.dev/api/docs \
   -H "Authorization: Bearer $KEYBOARD_JWT" \
   -H "Content-Type: application/json" \
   -d '{"title": "Q3 Plan", "content": "# Goals\n..."}'
 
 # List docs (filter titles with ?q=)
-curl "https://<workspace-url>/api/docs?q=plan" \
+curl "https://workspace.keyboard.dev/api/docs?q=plan" \
   -H "Authorization: Bearer $KEYBOARD_JWT"
 
 # Read one doc
-curl https://<workspace-url>/api/docs/<doc-id> \
+curl https://workspace.keyboard.dev/api/docs/<doc-id> \
   -H "Authorization: Bearer $KEYBOARD_JWT"
 
 # Update the title and content
-curl -X PATCH https://<workspace-url>/api/docs/<doc-id> \
+curl -X PATCH https://workspace.keyboard.dev/api/docs/<doc-id> \
   -H "Authorization: Bearer $KEYBOARD_JWT" \
   -H "Content-Type: application/json" \
   -d '{"title": "Q3 Plan (final)", "content": "# Goals\n1. Ship"}'
 
 # Delete
-curl -X DELETE https://<workspace-url>/api/docs/<doc-id> \
+curl -X DELETE https://workspace.keyboard.dev/api/docs/<doc-id> \
   -H "Authorization: Bearer $KEYBOARD_JWT"
 ```
 
