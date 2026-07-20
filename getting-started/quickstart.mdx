@@ -85,6 +85,84 @@ Keyboard will plan, create a codespace, connect to a websocket, and run code tha
 
 ![Screenshot 2025-07-28 at 4.36.05 PM.png](/images/Screenshot2025-07-28at4.36.05PM.png)
 
+## Demo app
+
+Not ready to connect your real apps yet? Keyboard ships with **Keyboard Workspace**, a hosted, Google Docs-style sandbox app you can automate against with your Keyboard account alone — no third-party credentials required. It's a safe place to see the full flow (auth → API calls → automation) before pointing Keyboard at your production tools.
+
+<Info>
+  Keyboard Workspace is a sandbox: documents are scoped to your organization, encrypted at rest, and **automatically deleted after 7 days**. Don't store anything you need to keep.
+</Info>
+
+### Sign in
+
+Open [workspace.keyboard.dev](https://workspace.keyboard.dev) in your browser and click **Sign in with Keyboard** — it uses the same account you created during setup. You can create and edit docs in the UI, and anything Keyboard creates via the API shows up there too.
+
+### API endpoints
+
+Every request to the API is authenticated with your Keyboard JWT, passed as a bearer token:
+
+```
+Authorization: Bearer <KEYBOARD_JWT>
+```
+
+Use these endpoints for CRUD actions on documents:
+
+| Action     | Method   | Path                          | Notes                                                                              |
+| ---------- | -------- | ----------------------------- | ---------------------------------------------------------------------------------- |
+| Health     | `GET`    | `/health`                     | Health check (no auth required)                                                    |
+| Who am I   | `GET`    | `/api/me`                     | Returns the `user_id`, `org_id`, and `email` from your token                       |
+| **List**   | `GET`    | `/api/docs?q=&limit=&offset=` | Newest-updated first. `q` filters titles, `limit` is 1–200 (default 50)            |
+| **Create** | `POST`   | `/api/docs`                   | Body: `{ "title": string, "content"?: string }`                                    |
+| **Read**   | `GET`    | `/api/docs/:id`               | Fetches one doc, including its `content`                                           |
+| **Update** | `PATCH`  | `/api/docs/:id`               | Body: `{ "title"?: string, "content"?: string }` — send only the fields to change  |
+| **Delete** | `DELETE` | `/api/docs/:id`               | Permanently deletes the doc                                                        |
+
+Limits: titles up to 300 characters, content up to 1,000,000 characters. Errors always come back as `{ "error": "<code>", "message": "<human text>" }` with a matching HTTP status (`401` bad/missing token, `403` no organization on the token, `404` not found, `400` validation).
+
+### Example requests
+
+```bash
+# Create a doc
+curl -X POST https://workspace.keyboard.dev/api/docs \
+  -H "Authorization: Bearer $KEYBOARD_JWT" \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Q3 Plan", "content": "# Goals\n..."}'
+
+# List docs (filter titles with ?q=)
+curl "https://workspace.keyboard.dev/api/docs?q=plan" \
+  -H "Authorization: Bearer $KEYBOARD_JWT"
+
+# Read one doc
+curl https://workspace.keyboard.dev/api/docs/<doc-id> \
+  -H "Authorization: Bearer $KEYBOARD_JWT"
+
+# Update the title and content
+curl -X PATCH https://workspace.keyboard.dev/api/docs/<doc-id> \
+  -H "Authorization: Bearer $KEYBOARD_JWT" \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Q3 Plan (final)", "content": "# Goals\n1. Ship"}'
+
+# Delete
+curl -X DELETE https://workspace.keyboard.dev/api/docs/<doc-id> \
+  -H "Authorization: Bearer $KEYBOARD_JWT"
+```
+
+### Try it with a prompt
+
+You don't need to write these requests yourself — describe the outcome and Keyboard handles the API calls. In Claude Desktop, try prompts like:
+
+```markdown
+Use Keyboard to create a doc in Keyboard Workspace titled "Team standup notes"
+with a bulleted agenda for tomorrow.
+```
+
+```markdown
+Use Keyboard to list my Keyboard Workspace docs, then update the newest one to
+add a "Next steps" section at the bottom.
+```
+
+Once you're comfortable with the flow, connect your real apps and use the exact same patterns against them.
+
 ## Connect your apps to Keyboard
 
 See [here](https://docs.keyboard.dev/getting-started/thirdpartyapps) to learn how to connect your SaaS apps. Keyboard will work with any app that has a REST API, SDK, or CLI.
