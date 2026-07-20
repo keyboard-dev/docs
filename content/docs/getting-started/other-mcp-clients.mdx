@@ -1,0 +1,124 @@
+---
+title: Other MCP clients server setup
+description: Complete setup guide for Keyboard MCP server with any MCP client
+---
+
+## Installation & setup for Cursor, VS Code, and other MCP clients
+
+### Step 1: Clone and Build the keyboard MCP server
+
+```bash
+# Clone the repository
+git clone https://github.com/keyboard-dev/keyboard-mcp
+cd keyboard-mcp
+
+# Install dependencies
+npm install
+
+# Build the project
+npm run build
+```
+
+### Step 2: Complete desktop onboarding
+
+**Important**: Before configuring any editor, complete the desktop onboarding:
+
+1. Download and run the Keyboard desktop app if you haven't already (download [here](https://github.com/keyboard-dev/approver-client/releases/latest))
+2. Complete the onboarding flow to automatically create your GitHub credentials and WebSocket key
+
+**After onboarding**: You can leave environment variables blank in your MCP configurations.
+
+## MCP client configuration
+
+Use these configurations with **any MCP client** that accepts JSON:
+
+### Cursor
+
+Create `~/.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "keyboard": {
+      "command": "node",
+      "args": ["/absolute/path/to/keyboard-mcp/build/index.js"]
+    }
+  }
+}
+```
+
+### VS Code
+
+Create `.vscode/mcp.json` in your workspace:
+
+```json
+{
+  "servers": {
+    "keyboard": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["/absolute/path/to/keyboard-mcp/build/index.js"]
+    }
+  }
+}
+```
+
+### Claude Desktop and Claude Code
+
+Add to `~/.claude/claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "keyboard": {
+      "command": "node",
+      "args": ["/absolute/path/to/keyboard-mcp/build/index.js"]
+    }
+  }
+}
+```
+
+Then you if you want to add it to claude code you can just run this command:
+
+```
+claude mcp add-from-claude-desktop
+```
+
+### Any other MCP client
+
+For any MCP client that accepts JSON configuration:
+
+```json
+{
+  "servers": {
+    "keyboard": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["/absolute/path/to/keyboard-mcp/build/index.js"]
+    }
+  }
+}
+```
+
+## Manual environment setup (if needed)
+
+If you want to use environment variables:
+
+```json
+{
+  "mcpServers": {
+    "keyboard": {
+      "command": "node",
+      "args": ["/absolute/path/to/keyboard-mcp/build/index.js"],
+      "env": {
+        "GITHUB_PAT_TOKEN": "your_github_token_here",
+        "SOCKET_KEY": "your_socket_key_here"
+      }
+    }
+  }
+}
+```
+
+---
+
+**You're ready!** Your AI assistant now has automation superpowers through Keyboard MCP. Checkout the rest of the docs to see what you can do!

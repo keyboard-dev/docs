@@ -1,0 +1,38 @@
+---
+title: Keyboard — one MCP, all your apps
+description: Keyboard is an open source MCP server that connects your AI client to all your apps and runs every task as approved, sandboxed code in your own infrastructure.
+---
+
+<LandingHero
+  eyebrow="Open source · Your infrastructure · Human approval"
+  headline1="One MCP, all your apps."
+  headline2="No credit tracking."
+  subhead="Keyboard connects AI clients like Claude to the tools you already use. Every task runs as real code in a sandboxed environment you own, and nothing executes until you approve it."
+/>
+
+<LandingSection title="How a task runs.">
+  <StepGrid
+    steps={[
+      { step: '01', title: 'Ask in plain language', body: 'Start a prompt with "keyboard" in Claude Desktop, Cursor, or any MCP client and describe the outcome you want.' },
+      { step: '02', title: 'Keyboard writes the code', body: 'Your AI client plans the task and writes a script against the apps you connected — any service with a REST API, SDK, or CLI.' },
+      { step: '03', title: 'You approve it', body: 'The Keyboard desktop app shows you exactly what is about to run. Nothing executes until you say so.' },
+      { step: '04', title: 'It runs in your sandbox', body: 'Code executes in an isolated GitHub Codespace on your own repo, with token-scoped permissions and encrypted messages.' },
+    ]}
+  />
+</LandingSection>
+
+<LandingSection title="Built security-first.">
+  <CardGrid
+    items={[
+      { title: 'Your keys never leave your repo', body: 'API keys live as Codespaces secrets in your private GitHub repo. Keyboard only knows the environment variable exists.', href: '/docs/getting-started/thirdpartyapps' },
+      { title: 'Human-in-the-loop approval', body: 'Every execution pauses for explicit approval in the desktop app before it can touch your systems.', href: '/docs/guides/claude' },
+      { title: 'Isolated execution', body: 'Each run is sandboxed, logged, and governed by single-use tokens and runtime validation.', href: '/docs/how-it-works/architecture' },
+      { title: 'Open source, end to end', body: 'The MCP server, approver app, and executor are all on GitHub. Read the code, fork it, contribute.', href: 'https://github.com/keyboard-dev' },
+    ]}
+  />
+</LandingSection>
+
+<LandingCTA
+  title="Set up Keyboard in minutes."
+  body="Install the desktop app, add the extension to Claude Desktop, and run your first approved task — the quickstart walks you through it."
+/>
